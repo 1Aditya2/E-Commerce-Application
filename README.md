@@ -1,2 +1,2 @@
 ### E-Commerce-Application
-### :hammer_and_wrench:
+A Poster selling E-commerce platform made using React and Strapi
