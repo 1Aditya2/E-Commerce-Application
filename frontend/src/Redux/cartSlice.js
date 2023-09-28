@@ -15,36 +15,36 @@ const cartSlice = createSlice({
         price: product.price,
         image: product.image.data.attributes.url,
       }:action.payload;
-      console.log(curItem);
+      // console.log(curItem);
       const index = state.cart.findIndex((item) => item.key === curItem.key);
-      console.log(index);
+      // console.log(index);
       if (index === -1) {
         state.cart.push({ ...curItem, quantity: 1 });
       } else {
         state.cart[index].quantity += 1;
-        console.log(state.cart[index].quantity);
+        // console.log(state.cart[index].quantity);
       }
       // console.log(state.cart);
     },
     removeFromCart: (state, action) => {
       const product = action.payload.attributes;
-      console.log(product, "remove from cart called");
+      // console.log(product, "remove from cart called");
       const curItem = product?{
         title: product.title,
         key: product.key,
         price: product.price,
         image: product.image.data.attributes.url,
       }:action.payload;
-      console.log(curItem);
+      // console.log(curItem);
       const index = state.cart.findIndex((item) => item.key === curItem.key);
-      console.log(index);
+      // console.log(index);
       if(index!==-1){
         if(state.cart[index].quantity===1){
             state.cart = state.cart.filter((item) => item.key !== curItem.key);
         }
         else{
             state.cart[index].quantity -= 1;
-            console.log(state.cart[index].quantity);
+            // console.log(state.cart[index].quantity);
         }
       }
 

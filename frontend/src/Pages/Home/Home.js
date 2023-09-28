@@ -20,7 +20,7 @@ function Home() {
       const topPicks=await axiosClient.get('products?filters[isTopPick][$eq]=true&populate=image')
       
       setTopProducts(topPicks.data.data)
-      console.log(topPicks.data.data);
+      // console.log(topPicks.data.data);
     } catch (e) {
       console.log(e);
     }

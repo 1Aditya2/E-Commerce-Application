@@ -11,13 +11,13 @@ import Collection from "./Pages/Collection/Collection";
 import Payments from "./Components/Payments/Payments";
 
 function App() {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
+  
   useEffect(() => {
-      dispatch(fetchCategories())
-  }, [])
+    dispatch(fetchCategories());
+  }, []);
   return (
     <div className="App">
-      
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

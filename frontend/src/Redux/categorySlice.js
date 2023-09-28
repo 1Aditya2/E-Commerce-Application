@@ -18,7 +18,7 @@ const categorySlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchCategories.fulfilled,(state,action)=>{
-            console.log(action.payload,'at store');
+            // console.log(action.payload,'at store');
             state.categories=action.payload
         })
         

@@ -1,5 +1,5 @@
 .Navbar{
-    // border: 1px solid red;
+    
     background-color: var(--primary-text-color);
     height: 80px;
     z-index: 99;
@@ -12,9 +12,10 @@
         justify-content: space-between;
         align-items: center;
         height: 100%;
-
+        
+        
         .nav-left{
-            // border: 1px solid red;
+           
             .link-group{
                 list-style: none;
                 display: flex;
@@ -27,11 +28,29 @@
                 }
             }
         }
+        .nav-search{
+            
+
+            position: absolute;
+            top: 50%;
+            transform: translateY(-10%);
+            left: 65%;
+            input{
+                width: 19vw;
+                font-size: 1.6vw;
+                border-radius: 20px;
+                padding-inline: 10px;
+                padding-block: 5px;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
         .nav-center{
-            // border: 1px solid salmon;
+           
             position: absolute;
             left: 50%;
-            // right: 50%;
+           
             transform: translate(-50%);
             background-color: var(--primary-text-color);
             .banner{
@@ -39,6 +58,7 @@
             }
         }
         .nav-right{
+         
             .nav-cart{
                 position: relative;
                 padding: 6px;
@@ -71,6 +91,9 @@
             .nav-center{
                 position: static;
                 transform: translateX(0);
+            }
+            .nav-search{
+                display: none;
             }
         }
     }

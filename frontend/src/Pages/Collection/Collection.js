@@ -39,7 +39,7 @@ function handleSortChange(e){
 }
 
   function handleChange(e){
-    console.log(e.target.value);
+    // console.log(e.target.value);
     navigate(`/category/${e.target.value}`)
   }
   return (

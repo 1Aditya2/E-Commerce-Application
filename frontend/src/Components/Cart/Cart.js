@@ -30,7 +30,7 @@ function Cart({ onClose }) {
 
     })
 
-    console.log(res,'response');
+    // console.log(res,'response');
   }
 
   return (

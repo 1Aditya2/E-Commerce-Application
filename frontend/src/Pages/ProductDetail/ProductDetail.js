@@ -18,14 +18,14 @@ function ProductDetail() {
     if(resp.data.data.length>0){
       setProduct(resp.data.data[0])
     }
-    console.log(resp);
+    // console.log(resp);
   }
   useEffect(()=>{
     setProduct(null)
     fetchData()
   },[params])
 
-  console.log(params);
+  // console.log(params);
 
   return (
     <div className="ProductDetail">

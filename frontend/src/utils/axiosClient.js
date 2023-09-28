@@ -7,3 +7,4 @@ export const axiosClient=axios.create({
         }
     }
 })
+//http://localhost:1337/api/products?populate=image&sort=${sortBy}
