@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-// import Categories from "./Pages/Collection/Collection";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
@@ -12,7 +11,7 @@ import Payments from "./Components/Payments/Payments";
 
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, []);

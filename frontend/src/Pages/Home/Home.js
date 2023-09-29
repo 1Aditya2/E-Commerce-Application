@@ -5,22 +5,21 @@ import Category from "../../Components/Category/Category";
 import Products from "../../Components/Products/Products";
 import { axiosClient } from "../../utils/axiosClient";
 import { useSelector } from "react-redux";
-// import axios from 'axios'
 function Home() {
   const categories = useSelector((state) => state.categoryReducer.categories);
-  let newCat=[]
-  for(let i=2;i<5;i++){
-    newCat.push(categories[i])
+  let newCat = [];
+  for (let i = 2; i < 5; i++) {
+    newCat.push(categories[i]);
   }
   const [topProducts, setTopProducts] = useState(null);
-  const f=true;
+  const f = true;
   async function fetchData() {
     try {
-      
-      const topPicks=await axiosClient.get('products?filters[isTopPick][$eq]=true&populate=image')
-      
-      setTopProducts(topPicks.data.data)
-      // console.log(topPicks.data.data);
+      const topPicks = await axiosClient.get(
+        "products?filters[isTopPick][$eq]=true&populate=image"
+      );
+
+      setTopProducts(topPicks.data.data);
     } catch (e) {
       console.log(e);
     }
@@ -40,8 +39,9 @@ function Home() {
           </p>
         </div>
         <div className="content">
-          {/* <Category/> */}
-          {newCat?.map(category=><Category key={category.id} cat={category}/>)}
+          {newCat?.map((category) => (
+            <Category key={category.id} cat={category} />
+          ))}
         </div>
       </section>
 
@@ -51,9 +51,9 @@ function Home() {
           <p className="subheading">All New Designs, Same Old Details</p>
         </div>
         <div className="content">
-        
-          {/* <Products/> */}
-          {topProducts?.map(pro=><Products key={pro.id} products={pro}/>)}
+          {topProducts?.map((pro) => (
+            <Products key={pro.id} products={pro} />
+          ))}
         </div>
       </section>
     </div>

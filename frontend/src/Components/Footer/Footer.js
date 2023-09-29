@@ -5,9 +5,9 @@ import {
   AiOutlineTwitter,
   AiOutlineFacebook,
   AiOutlineMail,
-  AiOutlineCopyrightCircle
+  AiOutlineCopyrightCircle,
 } from "react-icons/ai";
-import creditcard from '../../assets/creditcardicons.png'
+import creditcard from "../../assets/creditcardicons.png";
 function Footer() {
   return (
     <div className="Footer">
@@ -45,7 +45,10 @@ function Footer() {
           <div className="credit-card-img ">
             <img src={creditcard} alt="" />
           </div>
-          <p>Copyright {new Date().getFullYear()} <AiOutlineCopyrightCircle/> <strong>POSTERZ.</strong></p>
+          <p>
+            Copyright {new Date().getFullYear()} <AiOutlineCopyrightCircle />{" "}
+            <strong>POSTERZ.</strong>
+          </p>
         </div>
       </div>
     </div>

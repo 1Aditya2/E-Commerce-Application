@@ -1,64 +1,68 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-:root{
-  --primary-text-color:#212121;
-  --secondary-text-color:#888;
-  --accent-color:#8800c7
+:root {
+  --primary-text-color: #212121;
+  --secondary-text-color: #888;
+  --accent-color: #8800c7;
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--primary-text-color);
 }
-p{
+p {
   color: var(--secondary-text-color);
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
 }
-.container{
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   overflow: hidden;
-  /* border: 1px solid blue; */
 }
-.hover-link{
+.hover-link {
   cursor: pointer;
   border-radius: 4px;
 }
-.hover-link:hover{
-  background-color: rgba(255,255,255,0.1);
+.hover-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
-.hover-link:active{
-  background-color: rgba(255,255,255,0.2);
+.hover-link:active {
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.center{
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.btn-primary{
+.btn-primary {
   padding: 12px 16px;
   background-color: var(--accent-color);
-  color:white;
+  color: white;
   border-radius: 4px;
   border: none;
   cursor: pointer;
@@ -66,10 +70,10 @@ a{
   font-weight: 700;
   user-select: none;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #921bc9;
 }
-.btn-primary:active{
+.btn-primary:active {
   background-color: #983dc2;
 }
 ::-webkit-scrollbar {

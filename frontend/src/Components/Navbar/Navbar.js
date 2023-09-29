@@ -6,35 +6,32 @@ import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
 import List from "../List/List";
 function Navbar() {
-  const [input,setinput]=useState('');
+  const [input, setinput] = useState("");
   const [openCart, setopenCart] = useState(false);
   const categories = useSelector((state) => state.categoryReducer.categories);
-  let newCat=[]
-  for(let i=0;i<3;i++){
-    newCat.push(categories[i])
+  let newCat = [];
+  for (let i = 0; i < 3; i++) {
+    newCat.push(categories[i]);
   }
-  // console.log(newCat);
-  const cart=useSelector(state=>state.cartReducer.cart)
-  let totalItems=0
-  cart.forEach(item => {
-    totalItems+=item.quantity
+
+  const cart = useSelector((state) => state.cartReducer.cart);
+  let totalItems = 0;
+  cart.forEach((item) => {
+    totalItems += item.quantity;
   });
-  function handleClick(e){
-    const xyz=document.getElementById('xyz');
-    if(xyz.classList.contains('magic')){
-      xyz.classList.remove('magic')
+  function handleClick(e) {
+    const xyz = document.getElementById("xyz");
+    if (xyz.classList.contains("magic")) {
+      xyz.classList.remove("magic");
+    } else {
+      xyz.classList.add("magic");
     }
-    else{
-      xyz.classList.add('magic')
-    }
-    setinput('')
-    // console.log(xyz);
-    // console.log(e.target.value);
+    setinput("");
   }
-  function handleChange(e){
-    let temp=e.target.value.toUpperCase()
-    // console.log(temp);
-    setinput(temp)
+  function handleChange(e) {
+    let temp = e.target.value.toUpperCase();
+
+    setinput(temp);
   }
 
   return (
@@ -46,14 +43,15 @@ function Navbar() {
               {newCat?.map((category) => {
                 return (
                   <li className="hover-link" key={category?.id}>
-                    <Link className="link" to={`category/${category?.attributes
-?.key}`}>
+                    <Link
+                      className="link"
+                      to={`category/${category?.attributes?.key}`}
+                    >
                       {category?.attributes?.title}
                     </Link>
                   </li>
                 );
               })}
-              
             </ul>
           </div>
           <div className="nav-center">
@@ -62,8 +60,14 @@ function Navbar() {
             </Link>
           </div>
           <div className="nav-search">
-            <input type="text" placeholder="search any product here..." onClick={handleClick} id="abc" onChange={handleChange}/>
-            <List search={input}/>
+            <input
+              type="text"
+              placeholder="search any product here..."
+              onClick={handleClick}
+              id="abc"
+              onChange={handleChange}
+            />
+            <List search={input} />
           </div>
           <div className="nav-right">
             <div
@@ -73,8 +77,9 @@ function Navbar() {
               }}
             >
               <BsCart3 className="icon" />
-              {totalItems>0 && <span className="cart-count center">{totalItems}</span>}
-              
+              {totalItems > 0 && (
+                <span className="cart-count center">{totalItems}</span>
+              )}
             </div>
           </div>
         </div>

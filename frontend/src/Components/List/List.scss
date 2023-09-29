@@ -11,20 +11,17 @@
   font-size: 1.6vw;
   width: 19vw;
   ul {
-
     list-style: none;
-    
+
     width: 100%;
     color: black;
- 
 
     li {
-     
       white-space: nowrap;
-     
+
       border-bottom: 1px solid grey;
       width: 100%;
-      
+
       overflow: hidden;
       padding: 2px;
       text-align: left;
@@ -35,6 +32,6 @@
     }
   }
 }
-.magic{
+.magic {
   visibility: hidden;
 }

@@ -1,18 +1,17 @@
 .ProductDetail{
     margin-top: 40px;
+    border: 1px solid red;
     .product-layout{
-        // width: 100%;
+        
         display: flex;
-        // border: 1px solid salmon;
-        // justify-content: space-between;
+        
         .product-img{
-            // width: 50%;
-            // max-width: 600px;
+            
             min-width: 400px;
        
             height: 600px;
             position: relative;
-            // border: 1px solid red;
+           
      
             .img-container{
                 position: absolute;
