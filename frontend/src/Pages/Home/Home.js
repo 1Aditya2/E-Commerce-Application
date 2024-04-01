@@ -40,7 +40,7 @@ function Home() {
         </div>
         <div className="content">
           {newCat?.map((category) => (
-            <Category key={category.id} cat={category} />
+            <Category key={category?.id} cat={category} />
           ))}
         </div>
       </section>
