@@ -4,6 +4,11 @@ import { useParams } from "react-router-dom";
 import { axiosClient } from "../../utils/axiosClient";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../Redux/cartSlice";
+import { getImageUrl } from "../../utils/imageUtils";
+import 'react-inner-image-zoom/lib/styles.min.css';
+import InnerImageZoom from "react-inner-image-zoom";
+import { capsFirst } from "../../utils/helper";
+
 function ProductDetail() {
   const dispatch = useDispatch();
   const params = useParams();
@@ -11,6 +16,7 @@ function ProductDetail() {
   const [Product, setProduct] = useState(null);
   const cart = useSelector((state) => state.cartReducer.cart);
   const quantity = cart?.find((item) => item.key === key)?.quantity || 0;
+  const imageUrl = getImageUrl(Product?.attributes?.image);
 
   async function fetchData() {
     const resp = await axiosClient.get(
@@ -20,6 +26,7 @@ function ProductDetail() {
       setProduct(resp.data.data[0]);
     }
   }
+  
   useEffect(() => {
     setProduct(null);
     fetchData();
@@ -30,17 +37,12 @@ function ProductDetail() {
       <div className="container">
         <div className="product-layout">
           <div className="product-img center">
-            <div className="img-container">
-              <img
-                src={Product?.attributes?.image?.data?.attributes.url}
-                alt="sd"
-              />
-            </div>
+            <InnerImageZoom src={imageUrl} zoomSrc={imageUrl} />
           </div>
           <div className="product-info">
-            <h1 className="heading">{Product?.attributes?.title}</h1>
+            <h1 className="heading">{capsFirst(Product?.attributes?.title)}</h1>
             <h3 className="price">₹{Product?.attributes?.price}</h3>
-            <p className="description">{Product?.attributes?.desc}</p>
+            <p className="description">{capsFirst(Product?.attributes?.desc)}</p>
             <div className="cart-options">
               <div className="quantity-selector">
                 <span

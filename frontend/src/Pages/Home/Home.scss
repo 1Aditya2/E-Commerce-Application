@@ -1,6 +1,7 @@
 .Home{
     .collection{
         margin-top: 50px;
+        overflow: visible;
     }
     .info{
         .subheading{
@@ -8,13 +9,16 @@
         }
     }
     .content{
-        // border: 1px solid red;
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
         row-gap: 40px;
-        column-gap: 1%;
+        column-gap: 1.33%;
         margin-top: 20px;
     }
 }
+@media screen and (max-width: 768px) {
+    .content {
+      justify-content: space-between;
+    }
+  }

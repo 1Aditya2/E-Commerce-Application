@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getImageUrl } from "../utils/imageUtils";
 
 const cartSlice = createSlice({
   name: "cartSlice",
@@ -14,7 +15,7 @@ const cartSlice = createSlice({
             title: product.title,
             key: product.key,
             price: product.price,
-            image: product.image.data.attributes.url,
+            image: getImageUrl(product.image),
           }
         : action.payload;
 
@@ -34,7 +35,7 @@ const cartSlice = createSlice({
             title: product.title,
             key: product.key,
             price: product.price,
-            image: product.image.data.attributes.url,
+            image: getImageUrl(product.image),
           }
         : action.payload;
 

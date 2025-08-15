@@ -8,27 +8,34 @@
   padding-block: 5px;
   overflow: auto;
   height: 10vw;
-  font-size: 1.6vw;
+  font-size: 16px;
   width: 19vw;
   ul {
     list-style: none;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 100%;
     color: black;
-
-    li {
-      white-space: nowrap;
-
-      border-bottom: 1px solid grey;
+    a {
       width: 100%;
-
-      overflow: hidden;
-      padding: 2px;
-      text-align: left;
-      text-transform: lowercase;
-      text-overflow: ellipsis;
-      cursor: pointer;
-      color: black;
+      display: block;
+      border-radius: 16px;
+      &:hover {
+        background-color: var(--hover-color);
+      }
+      li {
+        white-space: nowrap;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 20ch;
+        padding: 4px 8px;
+        text-align: left;
+        text-transform: lowercase;
+        cursor: pointer;
+        color: black;
+      }
     }
   }
 }

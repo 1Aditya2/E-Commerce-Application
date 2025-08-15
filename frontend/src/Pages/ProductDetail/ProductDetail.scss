@@ -4,14 +4,12 @@
     .product-layout{
         
         display: flex;
+        justify-content: space-between;
         
         .product-img{
-            
-            min-width: 400px;
-       
+            width: 35%;
             height: 600px;
             position: relative;
-           
      
             .img-container{
                 position: absolute;
@@ -27,17 +25,17 @@
                     width: 100%;
                     height: 100%;
                     object-fit: contain;
-                    transform: scale(1);
+                    transform: scale(0.7);
                 }
             }
 
             
         }
         .product-info{
+            width: 60%;
             display: flex;
             flex-direction: column;
             gap: 20px;
-
 
             .cart-options{
                 .quantity-selector{
@@ -95,6 +93,18 @@
             flex-direction: column;
             .product-img{
                 width: 100%;
+            }
+            .product-info {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .cart-options{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
     }

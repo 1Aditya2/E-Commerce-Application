@@ -94,7 +94,7 @@ function Collection() {
           </div>
           <div className="products-box">
             {products?.map((product) => {
-              return <Products products={product} key={product?.id} />;
+              return <Products product={product} key={product?.id} />;
             })}
           </div>
         </div>

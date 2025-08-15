@@ -8,13 +8,13 @@ import { useDispatch } from "react-redux";
 import { fetchCategories } from "./Redux/categorySlice";
 import Collection from "./Pages/Collection/Collection";
 import Payments from "./Components/Payments/Payments";
-
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Navbar />

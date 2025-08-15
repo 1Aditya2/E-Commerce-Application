@@ -1,42 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import "./List.scss";
-import { axiosClient } from "../../utils/axiosClient";
 import { Link } from "react-router-dom";
-function List(props) {
-  const [Products, setProducts] = useState([]);
-  const [filterData, setFilterData] = useState([]);
+import { debounce } from "../../utils/helper";
+import { useSelector } from "react-redux";
+function List({ searchItem = '', fetchData }) {
+  const products = useSelector((state) => state.productReducer.products);
+
+  const debouncedSearch = useMemo((e) => debounce(2000, (search) => fetchData(search)), []);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await axiosClient.get(
-        "/products?pagination[page]=1&pagination[pageSize]=31"
-      );
-
-      setProducts(response?.data?.data);
-      setFilterData(response?.data?.data);
+    if (searchItem) {
+      debouncedSearch(searchItem);
     }
-    fetchData();
-  }, []);
-  useEffect(() => {
-    let temp = Products?.filter((prod) => {
-      if (props.search === "") {
-        return prod;
-      } else {
-        let ans = prod?.attributes?.title.toUpperCase();
-
-        if (ans.includes(props.search)) {
-          return prod;
-        }
-      }
-    });
-
-    setFilterData(temp);
-  }, [props.search]);
+  }, [searchItem, debouncedSearch]);
 
   return (
     <div className="list magic" id="xyz">
       <ul>
-        {filterData?.map((prod) => {
+        {products?.map((prod) => {
           return (
             <Link
               className="l"

@@ -7,12 +7,7 @@ import { axiosClient } from "../../utils/axiosClient";
 import { useSelector } from "react-redux";
 function Home() {
   const categories = useSelector((state) => state.categoryReducer.categories);
-  let newCat = [];
-  for (let i = 2; i < 5; i++) {
-    newCat.push(categories[i]);
-  }
   const [topProducts, setTopProducts] = useState(null);
-  const f = true;
   async function fetchData() {
     try {
       const topPicks = await axiosClient.get(
@@ -39,7 +34,7 @@ function Home() {
           </p>
         </div>
         <div className="content">
-          {newCat?.map((category) => (
+          {categories?.map((category) => (
             <Category key={category?.id} cat={category} />
           ))}
         </div>
@@ -52,7 +47,7 @@ function Home() {
         </div>
         <div className="content">
           {topProducts?.map((pro) => (
-            <Products key={pro.id} products={pro} />
+            <Products key={pro.id} product={pro} />
           ))}
         </div>
       </section>

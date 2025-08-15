@@ -3,13 +3,16 @@ import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { BsCart3 } from "react-icons/bs";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import List from "../List/List";
+import { fetchProducts } from "../../Redux/productSlice";
 function Navbar() {
   const [input, setinput] = useState("");
   const [openCart, setopenCart] = useState(false);
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.categoryReducer.categories);
   let newCat = [];
+
   for (let i = 0; i < 3; i++) {
     newCat.push(categories[i]);
   }
@@ -19,6 +22,12 @@ function Navbar() {
   cart.forEach((item) => {
     totalItems += item.quantity;
   });
+
+  function handleChange(e) {
+    let temp = e.target.value;
+    setinput(temp);
+  }
+
   function handleClick(e) {
     const xyz = document.getElementById("xyz");
     if (xyz.classList.contains("magic")) {
@@ -28,10 +37,9 @@ function Navbar() {
     }
     setinput("");
   }
-  function handleChange(e) {
-    let temp = e.target.value.toUpperCase();
 
-    setinput(temp);
+  const fetchData = async (search) => {
+    dispatch(fetchProducts({ populateImage: true, search }));
   }
 
   return (
@@ -63,11 +71,11 @@ function Navbar() {
             <input
               type="text"
               placeholder="search any product here..."
+              id="input"
               onClick={handleClick}
-              id="abc"
               onChange={handleChange}
             />
-            <List search={input} />
+            <List searchItem={input} fetchData={fetchData} />
           </div>
           <div className="nav-right">
             <div

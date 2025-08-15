@@ -1,32 +1,72 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import "./Products.scss";
-
 import { useNavigate } from "react-router-dom";
+import { getImageUrl } from "../../utils/imageUtils";
+import ProductPreview from "../ProductPreview/ProductPreview";
+import { capsFirst } from "../../utils/helper";
 
-function Products({ products }) {
+function Products({ product }) {
   const navigate = useNavigate();
+  const [hover, setHover] = useState(null);
+  const [rect, setRect] = useState(null);
+
+  const handleMouseEnter = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const x = event.clientX;
+    const y = event.clientY;
+    let relativeX = event.clientX - rect.left;
+    let relativeY = event.clientY - rect.top; 
+    if (x + 400 > width) {
+      relativeX = relativeX - (x + 412 - width);
+    }
+    if (y + 400 > height) {
+      relativeY = relativeY - (y + 412 - height);
+    }
+    setRect({ left: relativeX, top: relativeY });
+    setHover(product?.id);
+  };
+
+  const handleMouseLeave = () => {
+    setRect(null);
+    setHover(null);
+  }
+
+  const popUpPosition = useMemo(() => {
+    if (rect) {
+      return {
+        left: rect.left,
+        top: rect.top
+      };
+    }
+  }, [rect]);
+
   return (
     <div
       className="Product"
       onClick={() => {
-        navigate(`/products/${products?.attributes?.key}`);
+        navigate(`/products/${product?.attributes?.key}`);
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="product-container">
         <div className="product-img">
           <div className="img-container">
             <img
-              src={products?.attributes?.image.data.attributes.url}
+              src={getImageUrl(product?.attributes?.image)}
               alt=""
               id="img"
             />
           </div>
         </div>
         <div className="product-info">
-          <p className="title">{products?.attributes?.title}</p>
-          <p className="price">₹{products?.attributes?.price}</p>
+          <p className="title">{capsFirst(product?.attributes?.title)}</p>
+          <p className="price">₹{product?.attributes?.price}</p>
         </div>
       </div>
+      {hover === product?.id && <ProductPreview product={product} popUpPosition={popUpPosition}/>}
     </div>
   );
 }
