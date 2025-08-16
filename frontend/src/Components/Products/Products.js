@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import "./Products.scss";
 import { useNavigate } from "react-router-dom";
 import { getImageUrl } from "../../utils/imageUtils";
@@ -32,22 +32,13 @@ function Products({ product }) {
     setRect(null);
     setHover(null);
   }
-
-  const popUpPosition = useMemo(() => {
-    if (rect) {
-      return {
-        left: rect.left,
-        top: rect.top
-      };
-    }
-  }, [rect]);
-
   return (
     <div
       className="Product"
       onClick={() => {
         navigate(`/products/${product?.attributes?.key}`);
       }}
+      
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -66,7 +57,7 @@ function Products({ product }) {
           <p className="price">₹{product?.attributes?.price}</p>
         </div>
       </div>
-      {hover === product?.id && <ProductPreview product={product} popUpPosition={popUpPosition}/>}
+      {hover === product?.id && <ProductPreview product={product} popUpPosition={rect}/>}
     </div>
   );
 }

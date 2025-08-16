@@ -39,11 +39,6 @@
   &:hover #img {
     transform: scale(1);
   }
-  &:hover .mini-preview,
-  &:focus-within .mini-preview {
-    opacity: 1;
-    pointer-events: all;
-  }
 }
 
 @media screen and (max-width: 768px) {
