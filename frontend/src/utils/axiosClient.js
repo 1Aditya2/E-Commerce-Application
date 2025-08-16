@@ -1,9 +1,9 @@
 import axios from 'axios'
 export const axiosClient = axios.create({
-    baseURL: 'http://localhost:1337/api',
+    baseURL: 'https://strapi-server-5cb2.onrender.com/api',
     headers: {
         common: {
-            Authorization: `Bearer 02b9fb4214febfb602f001699e8cf5118af6cd9141f4123657a7fcf1103be115d4b823bd4f2ef297e5c27664f280d02c678e705ba7eadc6a6e3e08a2b224e6870ed9ab4be56b1b279b4826d20382500f54d54418c877e463aa7777a8f94aa9130277cf443a9a38670742a4d74f67ceea94c96f609e9db761bb2aa707c3592c68`
+            Authorization: `Bearer 15f72b4e0fed9f7a40e7ed19a5265dc1e268a49509f0fb00c9a80e37560d53acad3dc46ee7ae9d8e4e537f92702e10e4ec104b90c0a1eb9ed27258b6cec777bac2bb78d23c185f1246d2bfccefc309d4d831e71c7d9650369367da090a15ec7ef2705fbbc8b2cc76217636eb278c177f2b9c8acd0975e56dde0025b4fa41ddfe`
         }
     }
 })

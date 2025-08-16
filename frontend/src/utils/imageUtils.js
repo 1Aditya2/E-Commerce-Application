@@ -12,7 +12,7 @@ export const getImageUrl = (imageData) => {
   }
   
   // If it's a relative URL, prepend the server URL
-  return `http://localhost:1337${imageUrl}`;
+  return `https://strapi-server-5cb2.onrender.com${imageUrl}`;
 };
 
 // Alternative function for background images in CSS
